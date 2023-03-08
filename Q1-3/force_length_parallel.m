@@ -1,7 +1,7 @@
 function [normalize_PE_force] = force_length_parallel(lm)
     %%%% TASK 1
     
-    Ipes = 1;
+    lpes = 1;
     
     % Input Parameters
     % lm: normalized length of muscle (contractile element)
@@ -11,10 +11,10 @@ function [normalize_PE_force] = force_length_parallel(lm)
     
     % WRITE YOUR CODE HERE
     
-    if Im < Ipes
+    if lm < lpes
         normalize_PE_force = 0;
     else 
-        normalize_PE_force = (3*(Im-Ipes)^2)/(0.6+Im-Ipes);
+        normalize_PE_force = (3*(lm-lpes)^2)/(0.6+lm-lpes);
     
     end
 
