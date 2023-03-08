@@ -8,6 +8,8 @@ function [root] = get_velocity(a, lm, lt)
 % Output
 % root: normalized lengthening velocity of muscle (contractile element)
 
+x = fzero(fun,x0)   % tries to find a point x where fun(x) = 0. This solution is where fun(x) changes sign—fzero cannot find a root of a function such as x^2.
+
 
 % damping coefficient (see damped model in Millard et al.)
 beta = 0.1;
