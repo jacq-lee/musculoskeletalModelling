@@ -7,6 +7,10 @@ function simulate(T, f0M, resting_length_muscle, resting_length_tendon, RelTol, 
 % resting_length_tendon: actual length of tendon (m) that corresponds to normalized length of 1
 
 %%% TASK 1
+muscle_model = HillTypeMuscle;
+muscle_model.resting_length_muscle = 0.3;
+muscle_model.resting_length_tendon = 0.1;
+muscle_model.f0M = 100;
 
 %%% TASK 2
 
