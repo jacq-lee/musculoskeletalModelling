@@ -13,7 +13,11 @@ muscle_model.resting_length_tendon = 0.1;
 muscle_model.f0M = 100;
 
 %%% TASK 2
+a = 1;
+lm = 1;
+lt = 1.01;
 
+vm = get_velocity(a,lm,lt)
 
 %%% TASK 3 xdot = vm
 % the outputs of ode45 must be named "time" and "norm_lm"

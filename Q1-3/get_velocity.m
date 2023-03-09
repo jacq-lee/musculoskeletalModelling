@@ -8,14 +8,19 @@ function [root] = get_velocity(a, lm, lt)
 % Output
 % root: normalized lengthening velocity of muscle (contractile element)
 
-root = fzero(fun,x0)   % tries to find a point x where fun(x) = 0. This solution is where fun(x) changes sign—fzero cannot find a root of a function such as x^2.
-
+% WRITE CODE HERE TO CALCULATE VELOCITY
+param_fun = @(a,lm,lt,beta,vm,fl) (force_length_tendon(lt)-force_length_parallel(lm)-beta*vm)/(a*fl());
+fl_regression = get_muscle_force_length_regression();
+fl = feval(fl_regression,lm);
 
 % damping coefficient (see damped model in Millard et al.)
 beta = 0.1;
 
-% WRITE CODE HERE TO CALCULATE VELOCITY
+fun = @(vm) param_fun(a,lm,lt,beta,vm,fl);
+%fun = @(vm)(force_length_tendon(1.01)-force_length_parallel(1)-0.1*vm)/(1*get_muscle_force_length_regression())
 
+x0 = 0;
+root = fzero(fun,x0);  % tries to find a point x where fun(x) = 0. This solution is where fun(x) changes sign—fzero cannot find a root of a function such as x^2.
 
 end
 
