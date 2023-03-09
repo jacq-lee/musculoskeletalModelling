@@ -182,7 +182,7 @@ function [force_length_regression] = get_muscle_force_length_regression()
 
     % Regression with "fit" function with "gauss2" option as model type
     force_length_regression = fit(normalized_ta_active_length, normalized_ta_active_force, 'gauss2');
-    figure;
-    plot(force_length_regression, normalized_ta_active_length, normalized_ta_active_force);
+%     figure;
+%     plot(force_length_regression, normalized_ta_active_length, normalized_ta_active_force);
 
 end

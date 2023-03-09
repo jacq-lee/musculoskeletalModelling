@@ -8,19 +8,36 @@ function simulate(T, f0M, resting_length_muscle, resting_length_tendon, RelTol, 
 
 %%% TASK 1
 muscle_model = HillTypeMuscle;
-muscle_model.resting_length_muscle = 0.3;
-muscle_model.resting_length_tendon = 0.1;
-muscle_model.f0M = 100;
+muscle_model.resting_length_muscle = resting_length_muscle;
+muscle_model.resting_length_tendon = resting_length_tendon;
+muscle_model.f0M = f0M;
 
 %%% TASK 2
-a = 1;
-lm = 1;
-lt = 1.01;
 
-vm = get_velocity(a,lm,lt)
+    function [vm] = velocity_from_time_lm(T, norm_lm)
+
+        muscle_tendon_length = resting_length_muscle + resting_length_tendon;
+        norm_lt = norm_tendon_length(muscle_model, muscle_tendon_length, norm_lm);
+        
+        if T < 0.5
+                a = 0;
+            else
+                a = 1;
+        end
+            
+        vm = get_velocity(a, norm_lm, norm_lt);
+
+    end
 
 %%% TASK 3 xdot = vm
 % the outputs of ode45 must be named "time" and "norm_lm"
+y0 = 1;
+t0 = 0;
+tf = 2;
+tspan = [t0 tf];
+[T, norm_lm] = ode45(@velocity_from_time_lm, tspan, y0);
+
+%%
 
 %%% TASK 4
 % save the estimated forces in a vector called "forces"
