@@ -10,6 +10,7 @@ function [normalize_PE_force] = force_length_parallel(lm)
     % WRITE YOUR CODE HERE
 
     lpes = 1;
+    
     normalize_PE_force = zeros(1,length(lm));
 
     for n = 1:1:length(lm)

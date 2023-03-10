@@ -13,13 +13,12 @@ function [normalize_tendon_tension] = force_length_tendon(lt)
     % WRITE YOUR CODE HERE
     
     lts = 1;
+    
     normalize_tendon_tension = zeros(1,length(lt));
     
-    % for the ft(lt) = 0, lt < lts
     for n = 1:1:length(lt)
-        if lt(n) < lts
+        if lt(n) < lts 
             normalize_tendon_tension(n) = 0;
-        % for the ft(lt) = 10(lt - tls) + 240(lt - lts)^2, lt >= lts
         else
             normalize_tendon_tension(n) = 10*(lt(n) - lts) + 240*(lt(n) - lts)^2;
         end

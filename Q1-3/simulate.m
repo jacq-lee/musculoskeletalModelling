@@ -7,6 +7,8 @@ function simulate(T, f0M, resting_length_muscle, resting_length_tendon, RelTol, 
 % resting_length_tendon: actual length of tendon (m) that corresponds to normalized length of 1
 
 %%% TASK 1
+
+% Initialize a muscle model object
 muscle_model = HillTypeMuscle;
 muscle_model.resting_length_muscle = resting_length_muscle;
 muscle_model.resting_length_tendon = resting_length_tendon;
@@ -15,6 +17,8 @@ muscle_tendon_total_length = resting_length_muscle + resting_length_tendon;
 
 %%% TASK 2
 
+    % Nested function to determine velocity as a function of time and...
+    % normalized muscle length
     function [vm] = nested_velocity(time, norm_lm)
 
         norm_lt = norm_tendon_length(muscle_model, muscle_tendon_total_length, norm_lm);

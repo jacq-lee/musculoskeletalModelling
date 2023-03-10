@@ -167,6 +167,7 @@ function [force_length_regression] = get_muscle_force_length_regression()
                 34.603550295857985, 12.677966101694892
                 34.78106508875739, 17.830508474576263
                 33.6094674556213, 8.610169491525426 ];
+    
     ta_active_length = ta_active(:,1);
     ta_active_force = ta_active(:,2);
     
