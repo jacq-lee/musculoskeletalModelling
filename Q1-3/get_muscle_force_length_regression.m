@@ -178,11 +178,9 @@ function [force_length_regression] = get_muscle_force_length_regression()
     normalized_ta_active_force = ta_active_force./M;
 
     % Scale length so length is 1 at max force   
-    normalized_ta_active_length = ta_active_length/ta_active_length(I);
+    normalized_ta_active_length = ta_active_length./ta_active_length(I);
 
     % Regression with "fit" function with "gauss2" option as model type
     force_length_regression = fit(normalized_ta_active_length, normalized_ta_active_force, 'gauss2');
-%     figure;
-%     plot(force_length_regression, normalized_ta_active_length, normalized_ta_active_force);
 
 end
