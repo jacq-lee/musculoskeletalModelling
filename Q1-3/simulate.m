@@ -14,17 +14,17 @@ muscle_model.f0M = f0M;
 
 %%% TASK 2
 
-    function [vm] = velocity_from_time_lm(T, norm_lm)
+    function [vm] = nested_velocity(time, norm_lm)
 
         muscle_tendon_length = resting_length_muscle + resting_length_tendon;
         norm_lt = norm_tendon_length(muscle_model, muscle_tendon_length, norm_lm);
         
-        if T < 0.5
+        if time < 0.5
                 a = 0;
             else
                 a = 1;
         end
-            
+
         vm = get_velocity(a, norm_lm, norm_lt);
 
     end
@@ -33,9 +33,10 @@ muscle_model.f0M = f0M;
 % the outputs of ode45 must be named "time" and "norm_lm"
 y0 = 1;
 t0 = 0;
-tf = 2;
+tf = T;
 tspan = [t0 tf];
-[T, norm_lm] = ode45(@velocity_from_time_lm, tspan, y0);
+
+[time, norm_lm] = ode45(@nested_velocity, tspan, y0);
 
 %%
 
