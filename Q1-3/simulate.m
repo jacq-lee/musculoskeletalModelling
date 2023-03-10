@@ -36,7 +36,8 @@ t0 = 0;
 tf = T;
 tspan = [t0 tf];
 
-[time, norm_lm] = ode45(@nested_velocity, tspan, y0);
+opts = odeset('RelTol', RelTol, 'AbsTol', AbsTol);
+[time, norm_lm] = ode45(@nested_velocity, tspan, y0, opts);
 
 %%
 
